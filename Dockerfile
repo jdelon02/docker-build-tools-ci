@@ -43,10 +43,9 @@ RUN apt-get install -y ruby jq curl
 RUN gem install circle-cli
 RUN composer -n global require -n "hirak/prestissimo:^0.3"
 
-RUN apt-get install gnupg -yq 
+# install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash 
 RUN apt-get install nodejs -yq
-RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # install bower
 RUN npm install --global bower
