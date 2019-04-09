@@ -39,9 +39,13 @@ ADD . /build-tools-ci
 
 # Collect the components we need for this image
 RUN apt-get update
-RUN apt-get install -y ruby jq curl -qq git wget npm
+RUN apt-get install -y ruby jq curl
 RUN gem install circle-cli
 RUN composer -n global require -n "hirak/prestissimo:^0.3"
+
+RUN apt-get install gnupg -yq 
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash 
+RUN apt-get install nodejs -yq
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # install bower
